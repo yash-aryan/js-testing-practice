@@ -1,0 +1,16 @@
+{
+  "name": "js-testing-practice",
+  "version": "1.0.0",
+  "description": "In this project I used Jest to unit test and build each functions in a step-by-step basis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
