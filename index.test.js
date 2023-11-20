@@ -1,4 +1,4 @@
-const importedObj = require('./index');
+import * as importedObj from './index';
 
 describe('capitalize', () => {
 	test('works', () => {

@@ -44,7 +44,7 @@ const calculator = {
 	},
 };
 
-module.exports = {
+export {
 	capitalize,
 	reverseString,
 	calculator,
