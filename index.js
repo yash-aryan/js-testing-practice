@@ -69,4 +69,32 @@ function caeserCipher(inputText, key = null) {
 	}
 }
 
-export { capitalize, reverseString, calculator, caeserCipher };
+function analyzeArray(inputArr) {
+	if (!Array.isArray(inputArr)) throw Error('Invalid Input Error: Must be an Array');
+	if (inputArr.length === 0) throw Error('Invalid Input Error: Empty Array');
+	inputArr.forEach(n => {
+		if (typeof n !== 'number')
+			throw Error('Invalid Input Error: Array must contain only numbers');
+	});
+
+	const min = inputArr.reduce((acc, curr) => {
+		if (acc < curr) return acc;
+		else return curr;
+	});
+
+	const max = inputArr.reduce((acc, curr) => {
+		if (acc > curr) return acc;
+		else return curr;
+	});
+
+	const sum = inputArr.reduce((acc, curr) => acc + curr);
+
+	return {
+		min,
+		max,
+		average: sum / inputArr.length,
+		length: inputArr.length,
+	};
+}
+
+export { capitalize, reverseString, calculator, caeserCipher, analyzeArray };

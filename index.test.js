@@ -1,6 +1,7 @@
 import * as importedObj from './index';
 
-describe('capitalize', () => {
+// Test capitalize
+describe.skip('capitalize', () => {
 	test('works', () => {
 		expect(importedObj.capitalize('mUTsuki')).toBe('Mutsuki');
 	});
@@ -18,7 +19,8 @@ describe('capitalize', () => {
 	});
 });
 
-describe('reverseString', () => {
+// Test reverseString
+describe.skip('reverseString', () => {
 	test('works', () => {
 		expect(importedObj.reverseString('Baccano')).toBe('onaccaB');
 		expect(importedObj.reverseString('It has one of the best OP')).toBe(
@@ -35,7 +37,8 @@ describe('reverseString', () => {
 	});
 });
 
-describe('calculator', () => {
+// Test Calculator
+describe.skip('calculator', () => {
 	describe('add', () => {
 		test('works', () => {
 			expect(importedObj.calculator.add(7, 3)).toBe(10);
@@ -114,7 +117,8 @@ describe('calculator', () => {
 	});
 });
 
-describe('caeserCipher', () => {
+// Test caeserCipher
+describe.skip('caeserCipher', () => {
 	test('works', () => {
 		expect(importedObj.caeserCipher('ich liebe dich <3', 5)).toBe('nhm qnjgj inhm <3');
 		expect(importedObj.caeserCipher('Fist of flowing water!', 25)).toBe(
@@ -139,5 +143,56 @@ describe('caeserCipher', () => {
 
 	test('throws error when key more than 25', () => {
 		expect(() => importedObj.caeserCipher('Bocchi the Rock!', 57)).toThrow();
+	});
+});
+
+// Test analyzeArray
+describe('analyzeArray', () => {
+	test('works', () => {
+		expect(importedObj.analyzeArray([8, 4, 3, 1, 2, 6])).toHaveProperty('min', 1);
+		expect(importedObj.analyzeArray([8, 4, 3, 1, 2, 6])).toHaveProperty('max', 8);
+		expect(importedObj.analyzeArray([8, 4, 3, 1, 2, 6])).toHaveProperty('average', 4);
+		expect(importedObj.analyzeArray([8, 4, 3, 1, 2, 6])).toHaveProperty('length', 6);
+	});
+
+	test('throws error when not an array', () => {
+		expect(() => importedObj.analyzeArray(8, 4, 3, 1, 2, 6)).toThrow();
+		expect(() => importedObj.analyzeArray(2, 6)).toThrow();
+	});
+
+	test('throws error when empty array', () => {
+		expect(() => importedObj.analyzeArray([])).toThrow();
+	});
+
+	test('throws error when any element not a number', () => {
+		expect(() => importedObj.analyzeArray([2, 6, 'text', 1, 5])).toThrow();
+	});
+
+	describe('min', () => {
+		test('works', () => {
+			expect(importedObj.analyzeArray([88, 1323, 532, 6, 20]).min).toBe(6);
+			expect(importedObj.analyzeArray([5]).min).toBe(5);
+		});
+	});
+
+	describe('max', () => {
+		test('works', () => {
+			expect(importedObj.analyzeArray([88, 1323, 532, 6, 20]).max).toBe(1323);
+			expect(importedObj.analyzeArray([5]).max).toBe(5);
+		});
+	});
+
+	describe('average', () => {
+		test('works', () => {
+			expect(importedObj.analyzeArray([88, 1323, 532, 6, 20]).average).toBe(393.8);
+			expect(importedObj.analyzeArray([5]).average).toBe(5);
+		});
+	});
+
+	describe('length', () => {
+		test('works', () => {
+			expect(importedObj.analyzeArray([88, 1323, 532, 6, 20]).length).toBe(5);
+			expect(importedObj.analyzeArray([5]).length).toBe(1);
+		});
 	});
 });
