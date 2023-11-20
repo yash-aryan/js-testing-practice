@@ -44,8 +44,29 @@ const calculator = {
 	},
 };
 
-export {
-	capitalize,
-	reverseString,
-	calculator,
-};
+function caeserCipher(inputText, key = null) {
+	if (!inputText || key === null) throw Error('Invalid Input Error');
+	if (key > 25) throw Error('Invalid Input Error');
+
+	if (key === 0) return inputText.toLowerCase();
+	const cipherText = [];
+	inputText
+		.toLowerCase()
+		.split('')
+		.forEach(char => {
+			if (/[a-z]/.test(char)) {
+				const cipherCharCode = char.charCodeAt() + key;
+				cipherText.push(getChar(cipherCharCode));
+			} else cipherText.push(char);
+		});
+
+	return cipherText.join('');
+
+	function getChar(code) {
+		if (code > 122) return String.fromCharCode(code - 26);
+		if (code < 97) return String.fromCharCode(code + 26);
+		return String.fromCharCode(code);
+	}
+}
+
+export { capitalize, reverseString, calculator, caeserCipher };

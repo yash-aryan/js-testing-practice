@@ -113,3 +113,31 @@ describe('calculator', () => {
 		});
 	});
 });
+
+describe('caeserCipher', () => {
+	test('works', () => {
+		expect(importedObj.caeserCipher('ich liebe dich <3', 5)).toBe('nhm qnjgj inhm <3');
+		expect(importedObj.caeserCipher('Fist of flowing water!', 25)).toBe(
+			'ehrs ne eknvhmf vzsdq!'
+		);
+	});
+
+	test('throws error when missing argument', () => {
+		expect(() => importedObj.caeserCipher(5)).toThrow();
+		expect(() => importedObj.caeserCipher('ich liebe dich <3')).toThrow();
+		expect(() => importedObj.caeserCipher()).toThrow();
+	});
+
+	test('throws error when not string', () => {
+		expect(() => importedObj.caeserCipher(['Fist of flowing water!'], 7)).toThrow();
+		expect(() => importedObj.caeserCipher(999, 7)).toThrow();
+	});
+
+	test('throws error when empty string', () => {
+		expect(() => importedObj.caeserCipher('', 5)).toThrow();
+	});
+
+	test('throws error when key more than 25', () => {
+		expect(() => importedObj.caeserCipher('Bocchi the Rock!', 57)).toThrow();
+	});
+});
